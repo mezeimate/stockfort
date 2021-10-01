@@ -5,6 +5,9 @@
     <module name="SuppressWithPlainTextCommentFilter"/>
     <module name="JavadocPackage"/>
     <module name="TreeWalker">
+        <module name="JavadocVariable">
+            <property name="scope" value="public"/>
+        </module>
         <module name="MissingJavadocType"/>
         <module name="MissingJavadocMethod"/>
         <module name="MissingJavadocPackage"/>
