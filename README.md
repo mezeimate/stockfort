@@ -1,4 +1,4 @@
-javafx-board-game-example1
+javafx-teamproject
 ==========================
 
-Example project that demonstrates how to implement a board game in [JavaFX](https://openjfx.io/).
+[JavaFX](https://openjfx.io/).
