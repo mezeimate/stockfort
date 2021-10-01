@@ -1,7 +1,8 @@
-.square {
-    -fx-border-style: solid;
-}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-.square:hover {
-    -fx-background-color: whitesmoke;
+:root {
+    --main-color: #5433FF;
+    --second-color: #20BDFF;
+    --third-color: #A5FECB;
+    font-family: 'Quicksand', sans-serif;
 }
