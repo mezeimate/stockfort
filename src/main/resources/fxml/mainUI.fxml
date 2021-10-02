@@ -20,5 +20,6 @@
             <TableColumn fx:id="datumOszlop" prefWidth="200.0" text="Dátum" />
         </columns>
       </TableView>
+      <Button fx:id="felvetelButt" layoutX="14.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleFelvetelButt" prefHeight="25.0" prefWidth="131.0" text="Felvétel" />
    </children>
 </Pane>
