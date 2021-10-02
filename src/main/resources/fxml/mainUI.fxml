@@ -21,5 +21,7 @@
         </columns>
       </TableView>
       <Button fx:id="felvetelButt" layoutX="14.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleFelvetelButt" prefHeight="25.0" prefWidth="131.0" text="Felvétel" />
+      <Button fx:id="frissitButt" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleFrisitButt" prefHeight="25.0" prefWidth="131.0" text="Frissítés" />
+      <Button fx:id="torlesButt" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleTorlesButt" prefHeight="25.0" prefWidth="131.0" text="Törlés" />
    </children>
 </Pane>
