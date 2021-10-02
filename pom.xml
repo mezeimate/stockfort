@@ -6,5 +6,21 @@
     <artifactId>javafx-project-teamwork</artifactId>
     <version>1.0</version>
 
-    
+    <description>JavaFX TeamWork Project</description>
+
+    <developers>
+        <developer>
+            <id>narnia</id>
+            <name>Kovács Nikoletta, Nagy Bianka, Koncz Bence, Mezei Máté</name>
+            <organization>Faculty of Informatics, University of Debrecen</organization>
+            <organizationUrl>https://www.inf.unideb.hu/</organizationUrl>
+        </developer>
+    </developers>
+    <url>https://www.inf.unideb.hu/</url>
+    <packaging>jar</packaging>
+
+    <scm>
+        <connection>scm:git:https://github.com/mezeimate/stockfort.git</connection>
+        <developerConnection>scm:git:https://github.com/mezeimate/stockfort.git</developerConnection>
+    </scm>
 </project>
