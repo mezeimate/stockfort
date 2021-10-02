@@ -6,5 +6,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.LogController">
    <children>
+        <Button fx:id="logbutton" layoutX="108.0" layoutY="145.0" mnemonicParsing="false" onAction="#handlelogButton" prefHeight="25.0" prefWidth="185.0" text="Belépés" />
    </children>
 </Pane>
