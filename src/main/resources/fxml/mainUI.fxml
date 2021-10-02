@@ -6,5 +6,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.MainUiController">
    <children>
+      <Button fx:id="kijelentkezesButt" layoutX="823.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleKijelentkezesButt" prefHeight="25.0" prefWidth="163.0" text="Kijelentkezés" />
    </children>
 </Pane>
