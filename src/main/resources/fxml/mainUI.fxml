@@ -12,5 +12,13 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <TableView fx:id="raktarTab" layoutX="166.0" layoutY="92.0" prefHeight="379.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="nevOszlop" prefWidth="200.0" text="Név" />
+          <TableColumn fx:id="termekOszlop" prefWidth="200.0" text="Termék" />
+            <TableColumn fx:id="mennyisegOszlop" prefWidth="200.0" text="Mennyiség" />
+            <TableColumn fx:id="datumOszlop" prefWidth="200.0" text="Dátum" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
