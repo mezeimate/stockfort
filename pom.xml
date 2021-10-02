@@ -23,4 +23,18 @@
         <connection>scm:git:https://github.com/mezeimate/stockfort.git</connection>
         <developerConnection>scm:git:https://github.com/mezeimate/stockfort.git</developerConnection>
     </scm>
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+        <maven.compiler.release>16</maven.compiler.release>
+        <javafx.version.v>16</javafx.version.v>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
+        <jacoco.version>0.8.7</jacoco.version>
+        <jdbi.version>3.19.0</jdbi.version>
+        <tinylog.version>2.2.1</tinylog.version>
+        <surefire.version>3.0.0-M5</surefire.version>
+        <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
+        <jackson-databind.version>2.12.1</jackson-databind.version>
+    </properties>
+	
 </project>
