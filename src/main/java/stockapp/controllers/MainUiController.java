@@ -108,6 +108,32 @@ public class MainUiController {
     }
 
     @FXML
+    public void handleFelvetelButt() throws ParseException{
+        if(nevbe.getText() != null && termekbe.getText() != null && mennyisegbe.getText() != null && datumbe.getValue() != null){
+            hibaLabel.setVisible(false);
+            String nev = nevbe.getText();
+            String termek = termekbe.getText();
+            int db = Integer.parseInt(mennyisegbe.getText()+"");
+            LocalDate ld = datumbe.getValue();
+            Calendar c =  Calendar.getInstance();
+            c.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth());
+            Date date1 = c.getTime();
+
+            adatok.add(new Raktar(nev,termek,db,date1));
+            Logger.info(nev+", "+termek+", "+db+", "+date1+", adatsor felvéve a tablaba.");
+            tablaFrissito(data);
+
+            nevbe.setText(null);
+            termekbe.setText(null);
+            mennyisegbe.setText("");
+            datumbe.setValue(null);
+        }
+        else{
+            hibaLabel.setVisible(true);
+        }
+    }
+
+    @FXML
     public void handleTorlesButt(){
         hibaLabel.setVisible(false);
         Raktar tmp = raktarTab.getSelectionModel().getSelectedItem();
