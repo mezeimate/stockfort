@@ -6,12 +6,39 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.LogController">
    <children>
-        <Button fx:id="logbutton" layoutX="108.0" layoutY="145.0" mnemonicParsing="false" onAction="#handlelogButton" prefHeight="25.0" prefWidth="185.0" text="Belépés" />
-        <TextField fx:id="lognamein" alignment="CENTER" layoutX="80.0" layoutY="75.0" prefHeight="25.0" prefWidth="240.0" promptText="Felhasználónév" />
-        <Label layoutX="164.0" layoutY="14.0" text="Stockfort">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="22.0" prefHeight="110.0" prefWidth="434.0" styleClass="h1-text" text="Stockfort" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="70.0" />
          </font>
       </Label>
+      <Pane layoutX="350.0" layoutY="166.0" prefHeight="350.0" prefWidth="350.0" styleClass="login-container">
+         <children>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="20.0" prefHeight="62.0" prefWidth="268.0" styleClass="login-text" text="Bejelentkezés">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lognamein" layoutX="50.0" layoutY="119.0" prefHeight="50.0" prefWidth="250.0" promptText="Felhasználónév" styleClass="input-username">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordin" layoutX="50.0" layoutY="185.0" prefHeight="50.0" prefWidth="250.0" promptText="Jelszó" styleClass="input-password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="logbutton" layoutX="100.0" layoutY="274.0" mnemonicParsing="false" onAction="#handlelogButton" prefHeight="50.0" prefWidth="150.0" styleClass="btn-login" text="Belépés">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="bezarasBtn" alignment="CENTER" layoutX="434.0" layoutY="531.0" onAction="#bezarasAction" prefHeight="55.0" prefWidth="183.0" styleClass="btn-close" text="Bezárás">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

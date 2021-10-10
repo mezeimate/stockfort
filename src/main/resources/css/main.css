@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "style.css";
+
+.main-container {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+}
+
+.btn-main {
+    -fx-font-size: 20px;
+    -fx-background-color: linear-gradient(to bottom right, -fx-third-color, -fx-second-color, -fx-main-color);
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.btn-none {
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-font-size: 32px;
+    -fx-cursor: hand;
+}
+
+.second-container {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+}
+
+.table-name {
+    -fx-text-fill: red;
+}
+
+.table-container {
+    -fx-background-color: none;
+    -fx-border-color: -fx-third-color;
+}
+.table-container .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-container .column-header {
+    -fx-background-color: -fx-second-color;
+}
+.table-container .table-cell{
+    -fx-border-color: red;
+    -fx-padding: 2 0 2 10px;
+}
+
+.signout:hover {
+    -fx-cursor: hand;
+    -fx-font-size: 32px;
+}
+
+.btn-toggler {
+    -fx-background-color: linear-gradient(to bottom right, -fx-third-color, -fx-second-color);
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.input-name, .input-product {
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 20px;
+}
+
+.input-db {
+    -fx-font-size: 20px;
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.input-date{
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 20px;
+}

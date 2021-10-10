@@ -22,6 +22,9 @@ public class LogController {
     TextField lognamein;
 
     @FXML
+    Button bezarasBtn;
+
+    @FXML
     private void handlelogButton(ActionEvent event) throws IOException {
         Logger.info("Főképernyő betöltése.");
 
@@ -31,5 +34,10 @@ public class LogController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void bezarasAction() {
+        // TO DO close the application
     }
 }

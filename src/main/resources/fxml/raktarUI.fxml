@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="1050.0" styleClass="body-container" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.RaktarUiController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="12.0" prefHeight="50.0"
+               prefWidth="434.0" styleClass="h2-text" text="Stockfort" textAlignment="CENTER">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+        <Pane layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="900.0" styleClass="second-container">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="12.0" prefHeight="50.0"
+                       prefWidth="434.0" styleClass="h2-text" text="Raktárkészlet" textAlignment="CENTER">
+                    <font>
+                        <Font size="38.0"/>
+                    </font>
+                </Label>
+                <TableView fx:id="raktarTab" layoutX="25.0" layoutY="75.0" prefHeight="350.0" prefWidth="850.0"
+                           styleClass="table-container">
+                    <columns>
+                        <TableColumn fx:id="nevOszlop" prefWidth="391.0" styleClass="table-name" text="Név"/>
+                        <TableColumn fx:id="mennyisegOszlop" prefWidth="119.0" styleClass="table-count" text="Készlet"/>
+                        <TableColumn fx:id="datumOszlop" prefWidth="256.0" text="Utolsó használat"/>
+                    </columns>
+                </TableView>
+            </children>
+        </Pane>
+        <Button fx:id="visszaBtn" onAction="#visszaAction" layoutX="451.0" layoutY="533.0" mnemonicParsing="false"
+                prefHeight="55.0" prefWidth="148.0" styleClass="btn-none" text="Vissza">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Button>
+    </children>
+</Pane>
