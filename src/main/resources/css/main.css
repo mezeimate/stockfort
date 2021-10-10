@@ -24,6 +24,26 @@
     -fx-background-color: #fff;
     -fx-background-radius: 30px;
 }
+
+.table-name {
+    -fx-text-fill: red;
+}
+
+.table-container {
+    -fx-background-color: none;
+    -fx-border-color: -fx-third-color;
+}
+.table-container .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-container .column-header {
+    -fx-background-color: -fx-second-color;
+}
+.table-container .table-cell{
+    -fx-border-color: red;
+    -fx-padding: 2 0 2 10px;
+}
+
 .signout:hover {
     -fx-cursor: hand;
     -fx-font-size: 32px;
