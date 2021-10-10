@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    -fx-main-color: #5433FF;
+    -fx-second-color: #20BDFF;
+    -fx-third-color: #A5FECB;
+    -fx-font-family: 'Quicksand', sans-serif;
+    -fx-text-fill: #000;
+}
+
+.body-container {
+    -fx-background-color: linear-gradient(to bottom right,  -fx-main-color, -fx-second-color, -fx-third-color);
+}
+
