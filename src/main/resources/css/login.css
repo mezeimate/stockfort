@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "style.css";
+
+.login-container {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+}
+
+.login-text {
+    -fx-font-size: 36px;
+}
+
+.input-username, .input-password {
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 20px;
+}
+
+.btn-login {
+    -fx-background-color: linear-gradient(to bottom right,  -fx-third-color, -fx-second-color);
+    -fx-background-radius: 10px;
+    -fx-font-size: 20px;
+    -fx-animated: true;
+}
+
+.btn-login:hover {
+    -fx-font-size: 22px;
+    -fx-cursor: hand;
+}
+
+.close-text:hover {
+    -fx-cursor: hand;
+}
+
+.btn-close {
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-font-size: 32px;
+    -fx-cursor: hand;
+}
+
+.btn-close:hover {
+    -fx-cursor: hand;
+    -fx-font-size: 32px;
+}
+
+
