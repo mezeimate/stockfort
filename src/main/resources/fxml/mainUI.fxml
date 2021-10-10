@@ -6,31 +6,39 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.MainUiController">
    <children>
-      <Button fx:id="kijelentkezesButt" layoutX="823.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleKijelentkezesButt" prefHeight="25.0" prefWidth="163.0" text="Kijelentkezés" />
-      <Label fx:id="udvLabel" layoutX="14.0" layoutY="22.0" prefHeight="17.0" prefWidth="405.0" text="Üdvözöllek, ">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="22.0" prefHeight="110.0" prefWidth="434.0" styleClass="h1-text" text="Stockfort" textAlignment="CENTER">
          <font>
-            <Font size="24.0" />
+             <Font size="70.0" />
          </font>
-      </Label>
-      <TableView fx:id="raktarTab" layoutX="166.0" layoutY="92.0" prefHeight="379.0" prefWidth="800.0">
-        <columns>
-          <TableColumn fx:id="nevOszlop" prefWidth="200.0" text="Név" />
-          <TableColumn fx:id="termekOszlop" prefWidth="200.0" text="Termék" />
-            <TableColumn fx:id="mennyisegOszlop" prefWidth="200.0" text="Mennyiség" />
-            <TableColumn fx:id="datumOszlop" prefWidth="200.0" text="Dátum" />
-        </columns>
-      </TableView>
-      <Button fx:id="felvetelButt" layoutX="14.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleFelvetelButt" prefHeight="25.0" prefWidth="131.0" text="Felvétel" />
-      <Button fx:id="frissitButt" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleFrisitButt" prefHeight="25.0" prefWidth="131.0" text="Frissítés" />
-      <Button fx:id="torlesButt" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleTorlesButt" prefHeight="25.0" prefWidth="131.0" text="Törlés" />
-      <TextField fx:id="nevbe" alignment="CENTER" layoutX="166.0" layoutY="549.0" prefHeight="25.0" prefWidth="200.0" promptText="Név" />
-      <TextField fx:id="termekbe" alignment="CENTER" layoutX="366.0" layoutY="549.0" prefHeight="25.0" prefWidth="200.0" promptText="Termék" />
-      <TextField fx:id="mennyisegbe" alignment="CENTER" layoutX="566.0" layoutY="549.0" prefHeight="25.0" prefWidth="200.0" promptText="Mennyiség" />
-      <DatePicker fx:id="datumbe" layoutX="766.0" layoutY="549.0" prefHeight="25.0" prefWidth="200.0" promptText="Dátum" />
-      <Label fx:id="hibaLabel" layoutX="14.0" layoutY="524.0" prefHeight="17.0" prefWidth="351.0" text="Minden mező kitöltése kötelező!" textFill="RED" visible="false">
+     </Label>
+     <Pane layoutX="350.0" layoutY="166.0" prefHeight="350.0" prefWidth="350.0" styleClass="main-container">
+         <children>
+             <Label fx:id="udvLabel" alignment="CENTER" layoutX="41.0" layoutY="22.0" prefHeight="99.0" prefWidth="268.0" styleClass="login-text" text="Üdvözöllek,">
+                 <font>
+                     <Font size="30.0" />
+                 </font>
+             </Label>
+             <Button fx:id="rendFelvBtn" layoutX="50.0" layoutY="140.0" mnemonicParsing="false" onAction="#loadRendelesFelvetele" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelés felvétele">
+                 <font>
+                     <Font size="20.0" />
+                 </font>
+             </Button>
+             <Button fx:id="rendBtn" layoutX="50.0" layoutY="202.0" mnemonicParsing="false" onAction="#loadRendelesek" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelések">
+                 <font>
+                     <Font size="20.0" />
+                 </font>
+             </Button>
+             <Button fx:id="raktarBtn" layoutX="50.0" layoutY="263.0" mnemonicParsing="false" onAction="#loadRaktarkeszlet" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Raktárkészlet">
+                 <font>
+                     <Font size="20.0" />
+                 </font>
+             </Button>
+         </children>
+     </Pane>
+     <Button fx:id="kijelentkezesBtn" onAction="#kijelentkezes" alignment="CENTER" layoutX="441.0" layoutY="537.0" prefHeight="55.0" prefWidth="168.0" styleClass="btn-none" text="Kilépés">
          <font>
-            <Font size="14.0" />
+             <Font size="30.0" />
          </font>
-      </Label>
+     </Button>
    </children>
 </Pane>
