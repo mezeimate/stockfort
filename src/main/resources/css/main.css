@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "style.css";
+
+.main-container {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+}
+
+.btn-main {
+    -fx-font-size: 20px;
+    -fx-background-color: linear-gradient(to bottom right, -fx-third-color, -fx-second-color, -fx-main-color);
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.btn-none {
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-font-size: 32px;
+    -fx-cursor: hand;
+}
+
+.second-container {
+    -fx-background-color: #fff;
+    -fx-background-radius: 30px;
+}
+.signout:hover {
+    -fx-cursor: hand;
+    -fx-font-size: 32px;
+}
