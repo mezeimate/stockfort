@@ -48,3 +48,33 @@
     -fx-cursor: hand;
     -fx-font-size: 32px;
 }
+
+.btn-toggler {
+    -fx-background-color: linear-gradient(to bottom right, -fx-third-color, -fx-second-color);
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.input-name, .input-product {
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 20px;
+}
+
+.input-db {
+    -fx-font-size: 20px;
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.input-date{
+    -fx-background-color: none;
+    -fx-border-color: -fx-main-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 20px;
+}
