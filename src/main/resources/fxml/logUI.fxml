@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.LogController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" styleClass="body-container" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.LogController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="22.0" prefHeight="110.0" prefWidth="434.0" styleClass="h1-text" text="Stockfort" textAlignment="CENTER">
          <font>
