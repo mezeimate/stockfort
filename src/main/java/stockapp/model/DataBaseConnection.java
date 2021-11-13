@@ -22,79 +22,67 @@ public class DataBaseConnection {
 
     }
 
-    public void getKategoriaTabel(){
+    public ResultSet getKategoriaTabel(){
         try {
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT * FROM kategoria");
-            while(result.next()){
-                System.out.println(result.getInt("id")+" | "+result.getString("kategorianev"));
-            }
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-
+        return result;
     }
 
-    public void getFelhasznaloTabel(){
+    public ResultSet getFelhasznaloTabel(){
         try {
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT * FROM felhasznalo");
-            while(result.next()){
-                System.out.println(result.getInt("id")+" | "+result.getString("nev")+" | "+result.getString("jelszo"));
-            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
+        return result;
 
     }
 
-    public void getRaktarTabel(){
+    public ResultSet getRaktarTabel(){
         try {
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT * FROM raktar");
-            while(result.next()){
-                System.out.println(result.getInt("id")+" | "+result.getInt("termekid")+" | "+result.getInt("darab"));
-            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-
+        return result;
     }
 
-    public void getRendelesekTabel(){
+    public ResultSet getRendelesekTabel(){
         try {
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT * FROM rendelesek");
-            while(result.next()){
-                System.out.println(result.getInt("id")+" | "+result.getInt("termekid")+" | "+result.getInt("darab")+" | "+result.getDate("datum")+" | "+result.getInt("felhasznaloid")+" | "+result.getInt("raktarid"));
-            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+        return result;
 
     }
 
-    public void getTermekekTabel(){
+    public ResultSet getTermekekTabel(){
         try {
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT * FROM raktar");
-            while(result.next()){
-                System.out.println(result.getInt("id")+" | "+result.getString("megnevezes")+" | "+result.getInt("kategoriaid"));
-            }
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-
+        return result;
     }
 
 
