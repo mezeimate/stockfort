@@ -23,21 +23,42 @@ public class LogController {
     TextField lognamein;
 
     @FXML
-    Button bezarasBtn;
-
-    @FXML
     PasswordField passwordin;
 
     @FXML
-    private void handlelogButton(ActionEvent event) throws IOException {
-        Logger.info("Főképernyő betöltése.");
+    Button bezarasBtn;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
-        Parent root = fxmlLoader.load();
-        fxmlLoader.<MainUiController>getController().setFelhNev(lognamein.getText()+"");
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+    /**
+     *  Secure Password requirements
+     * - start-of-string
+     * - a digit must occur at least once
+     * - a lower case letter must occur at least once
+     * - an upper case letter must occur at least once
+     * - a special character must occur at least once
+     * - no whitespace allowed in the entire string
+     * - anything, at least eight places though
+     * - end-of-string
+     */
+    private String passwdMatch = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!?@#$%^&+=])(?=\\S+$).{8,}$";
+
+    // login: admin admin
+    @FXML
+    private void handlelogButton(ActionEvent event) throws IOException {
+
+        if (lognamein.getText().equals("admin") && passwordin.getText().equals("admin")) {
+
+            Logger.info("Főképernyő betöltése.");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
+            Parent root = fxmlLoader.load();
+            fxmlLoader.<MainUiController>getController().setFelhNev(lognamein.getText()+"");
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        else{
+            Logger.warn("Hibas felhasznalonev vagy jelszo!");
+        }
     }
 
     @FXML
