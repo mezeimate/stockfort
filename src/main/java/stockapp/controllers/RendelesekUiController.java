@@ -61,6 +61,40 @@ public class RendelesekUiController {
         stage.show();
     }
 
+    ObservableList<Raktar> data;
+    ArrayList<Raktar> adatok;
+    SimpleDateFormat sdf;
+
+    @FXML
+    private void initialize() {
+        sdf = new SimpleDateFormat("dd-MM-yyyy");
+        data = FXCollections.observableArrayList();
+        adatok = new ArrayList<>();
+
+        nevOszlop.setCellValueFactory(new PropertyValueFactory<>("nevOszlop"));
+        termekOszlop.setCellValueFactory(new PropertyValueFactory<>("termekOszlop"));
+        mennyisegOszlop.setCellValueFactory(new PropertyValueFactory<>("mennyisegOszlop"));
+        datumOszlop.setCellValueFactory(new PropertyValueFactory<>("datumOszlop"));
+    }
+
+    @FXML
+    public void handleRendFelBtn() throws ParseException{
+        String nev = "Narnia";
+        String termek = "LAPTOP";
+        int db = 10;
+        Date date1 = new Date();
+        adatok.add(new Raktar(nev,termek,db,date1));
+        Logger.info(nev+", "+termek+", "+db+", "+date1+", adatsor felvéve a tablaba.");
+        tablaFrissito(data);
+    }
+
+    private void tablaFrissito(ObservableList<Raktar> data){
+        rendelesekTab.getItems().clear();
+        data.addAll(FXCollections.observableArrayList(adatok));
+        rendelesekTab.setItems(data);
+        Logger.info("Tabla frissítve.");
+    }
+
     /*
     ObservableList<Raktar> data;
     ArrayList<Raktar> adatok;

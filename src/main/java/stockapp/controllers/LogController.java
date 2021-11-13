@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
@@ -23,6 +24,9 @@ public class LogController {
 
     @FXML
     Button bezarasBtn;
+
+    @FXML
+    PasswordField passwordin;
 
     @FXML
     private void handlelogButton(ActionEvent event) throws IOException {
