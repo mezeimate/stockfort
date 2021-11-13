@@ -28,6 +28,18 @@ public class LogController {
     @FXML
     PasswordField passwordin;
 
+    /**
+     *  Secure Password requirements
+     * - start-of-string
+     * - a digit must occur at least once
+     * - a lower case letter must occur at least once
+     * - an upper case letter must occur at least once
+     * - a special character must occur at least once
+     * - no whitespace allowed in the entire string
+     * - anything, at least eight places though
+     * - end-of-string
+     */
+    private String passwdMatch = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!?@#$%^&+=])(?=\\S+$).{8,}$";
     @FXML
     private void handlelogButton(ActionEvent event) throws IOException {
         Logger.info("Főképernyő betöltése.");
