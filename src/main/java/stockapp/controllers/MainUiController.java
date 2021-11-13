@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import lombok.extern.java.Log;
 import org.tinylog.Logger;
+import stockapp.model.DataBaseConnection;
 import stockapp.model.Raktar;
 
 import java.io.IOException;
@@ -44,7 +45,12 @@ public class MainUiController {
     }
 
     @FXML
-    private void initialize() {}
+    private void initialize() {
+        //Adatbázis teszteléshez
+        /*DataBaseConnection db = new DataBaseConnection();
+        db.getKategoriaTabel();*/
+
+    }
 
     @FXML
     public void loadRendelesFelvetele(ActionEvent event) throws IOException {
