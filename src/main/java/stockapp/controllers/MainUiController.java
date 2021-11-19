@@ -37,7 +37,8 @@ public class MainUiController {
     @FXML
     private void initialize() throws SQLException {
         //Adatbázis teszteléshez
-       /* DataBaseConnection db = new DataBaseConnection();
+        /*DataBaseConnection db = new DataBaseConnection();
+        db.insertKategoriaTable("Elektronikai");
         ResultSet result = db.getKategoriaTabel();
         ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
         DatabaseKategoria k = new DatabaseKategoria();
@@ -54,8 +55,8 @@ public class MainUiController {
 
         for(int i=0; i<kategoriak.size();i++){
             System.out.println(kategoriak.get(i).getKategoriadID()+" | "+kategoriak.get(i).getKategoriaNev());
-        }*/
-
+        }
+        */
 
     }
 
