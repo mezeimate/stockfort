@@ -33,6 +33,4 @@ public class DatabaseFelhasznalo {
         return jelszo;
     }
 
-
-
 }
