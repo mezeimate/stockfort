@@ -13,10 +13,19 @@
     -fx-cursor: hand;
 }
 
+.btn-main:hover {
+    -fx-font-size: 22px;
+    -fx-cursor: hand;
+}
+
 .btn-none {
     -fx-background-color: none;
     -fx-border-color: none;
     -fx-font-size: 32px;
+    -fx-cursor: hand;
+}
+.btn-none:hover {
+    -fx-font-size: 34px;
     -fx-cursor: hand;
 }
 
@@ -25,10 +34,10 @@
     -fx-background-radius: 30px;
 }
 
+
 .table-name {
     -fx-text-fill: red;
 }
-
 .table-container {
     -fx-background-color: none;
     -fx-border-color: -fx-third-color;
@@ -43,6 +52,7 @@
     -fx-border-color: red;
     -fx-padding: 2 0 2 10px;
 }
+
 
 .signout:hover {
     -fx-cursor: hand;
