@@ -33,6 +33,16 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Button fx:id="regisztracioButton" alignment="CENTER" layoutX="262.0" layoutY="286.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" styleClass="btn-login" text="Regisztráció">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="loginError" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="244.0" prefHeight="25.0" prefWidth="360.0" styleClass="lbl-err" text="Hibás felhasználónév vagy jelszó!" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button fx:id="bezarasBtn" alignment="CENTER" layoutX="434.0" layoutY="531.0" onAction="#bezarasAction" prefHeight="55.0" prefWidth="183.0" styleClass="btn-close" text="Bezárás">
