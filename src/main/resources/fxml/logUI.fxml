@@ -11,24 +11,24 @@
             <Font size="70.0" />
          </font>
       </Label>
-      <Pane layoutX="350.0" layoutY="166.0" prefHeight="350.0" prefWidth="350.0" styleClass="login-container">
+      <Pane layoutX="308.0" layoutY="162.0" prefHeight="350.0" prefWidth="434.0" styleClass="login-container">
          <children>
-            <Label alignment="CENTER" layoutX="41.0" layoutY="20.0" prefHeight="62.0" prefWidth="268.0" styleClass="login-text" text="Bejelentkezés">
+            <Label alignment="CENTER" layoutX="83.0" layoutY="20.0" prefHeight="62.0" prefWidth="268.0" styleClass="login-text" text="Bejelentkezés">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="lognamein" layoutX="50.0" layoutY="119.0" prefHeight="50.0" prefWidth="250.0" promptText="Felhasználónév" styleClass="input-username">
+            <TextField fx:id="lognamein" layoutX="92.0" layoutY="101.0" prefHeight="50.0" prefWidth="250.0" promptText="Felhasználónév" styleClass="input-username">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordin" layoutX="50.0" layoutY="185.0" prefHeight="50.0" prefWidth="250.0" promptText="Jelszó" styleClass="input-password">
+            <PasswordField fx:id="passwordin" layoutX="92.0" layoutY="175.0" prefHeight="50.0" prefWidth="250.0" promptText="Jelszó" styleClass="input-password">
                <font>
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="logbutton" layoutX="100.0" layoutY="274.0" mnemonicParsing="false" onAction="#handlelogButton" prefHeight="50.0" prefWidth="150.0" styleClass="btn-login" text="Belépés">
+            <Button fx:id="logbutton" alignment="CENTER" layoutX="12.0" layoutY="286.0" mnemonicParsing="false" onAction="#handlelogButton" prefHeight="50.0" prefWidth="160.0" styleClass="btn-login" text="Belépés">
                <font>
                   <Font size="20.0" />
                </font>
