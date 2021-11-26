@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" styleClass="body-container" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.RendelesUiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" styleClass="body-container" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.RendelesUiController">
     <children>
         <Label fx:id="hibaLabel" layoutX="14.0" layoutY="524.0" prefHeight="17.0" prefWidth="351.0" text="Minden mező kitöltése kötelező!" textFill="RED" visible="false">
             <font>
@@ -26,49 +24,48 @@
                     </font>
                 </Label>
                 <!-- NÉV -->
-                <Label alignment="BOTTOM_LEFT" layoutX="256.0" layoutY="80.0" prefHeight="38.0" prefWidth="56.0" styleClass="input-label" text="Név:">
+                <Label alignment="CENTER" layoutX="114.0" layoutY="91.0" prefHeight="45.0" prefWidth="120.0" styleClass="input-label" text="Név:">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nevbe" layoutX="350.0" layoutY="80.0" prefHeight="38.0" prefWidth="250.0" styleClass="input-name">
+                <TextField fx:id="nevbe" layoutX="315.0" layoutY="91.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-name">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </TextField>
                 <!-- DÁTUM -->
-                <Label alignment="BOTTOM_LEFT" layoutX="256.0" layoutY="128.0" prefHeight="38.0" prefWidth="82.0" styleClass="input-label" text="Dátum:">
+                <Label alignment="CENTER" layoutX="114.0" layoutY="153.0" prefHeight="45.0" prefWidth="120.0" styleClass="input-label" text="Dátum:">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="datumbe" layoutX="350.0" layoutY="128.0" prefHeight="38.0" prefWidth="250.0" styleClass="input-date">
+                <TextField fx:id="datumbe" alignment="CENTER" editable="false" layoutX="315.0" layoutY="153.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-date">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </TextField>
                 <!-- TERMÉK -->
-                <Label alignment="BOTTOM_LEFT" layoutX="256.0" layoutY="176.0" prefHeight="38.0" prefWidth="89.0" styleClass="input-label" text="Termék:">
+                <Label alignment="CENTER" layoutX="114.0" layoutY="275.0" prefHeight="45.0" prefWidth="120.0" styleClass="input-label" text="Termék:">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="termekbe" layoutX="350.0" layoutY="176.0" prefHeight="38.0" prefWidth="182.0" styleClass="input-product">
+                <TextField fx:id="termekbe" layoutX="315.0" layoutY="275.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="mennyisegbe" layoutX="544.0" layoutY="176.0" maxHeight="38.0" maxWidth="56.0" minHeight="38.0" minWidth="38.0" prefHeight="38.0" prefWidth="56.0" styleClass="input-db" />
-                <Button layoutX="610.0" layoutY="176.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" styleClass="btn-toggler" text="+">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Button>
-                <Button fx:id="mentesBtn" layoutX="336.0" layoutY="388.0" mnemonicParsing="false" onAction="#saveOrder" prefHeight="50.0" prefWidth="229.0" styleClass="btn-main" text="Mentés">
+                <Button fx:id="mentesBtn" layoutX="336.0" layoutY="386.0" mnemonicParsing="false" onAction="#saveOrder" prefHeight="50.0" prefWidth="229.0" styleClass="btn-main" text="Mentés">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Button>
+            <Label alignment="CENTER" layoutX="114.0" layoutY="212.0" prefHeight="45.0" prefWidth="120.0" styleClass="input-label" text="Kategória:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
         <Button fx:id="visszaBtn" layoutX="451.0" layoutY="533.0" mnemonicParsing="false" onAction="#visszaAction" prefHeight="55.0" prefWidth="148.0" styleClass="btn-none" text="Vissza">
