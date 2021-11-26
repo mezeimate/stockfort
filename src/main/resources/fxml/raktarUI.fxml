@@ -18,7 +18,7 @@
                         <Font size="38.0" />
                     </font>
                 </Label>
-                <TableView fx:id="raktarTab" layoutX="25.0" layoutY="75.0" prefHeight="350.0" prefWidth="850.0" styleClass="table-container">
+                <TableView fx:id="raktarTab" layoutX="25.0" layoutY="75.0" prefHeight="350.0" prefWidth="850.0">
                     <columns>
                         <TableColumn fx:id="nevOszlop" prefWidth="348.0" styleClass="table-name" text="Név" />
                         <TableColumn fx:id="mennyisegOszlop" prefWidth="235.0" styleClass="table-count" text="Készlet" />

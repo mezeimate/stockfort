@@ -35,6 +35,7 @@
 }
 
 .btn-close {
+    -fx-background-radius: 10px;
     -fx-background-color: none;
     -fx-border-color: none;
     -fx-font-size: 32px;
@@ -43,7 +44,10 @@
 
 .btn-close:hover {
     -fx-cursor: hand;
-    -fx-font-size: 32px;
+    -fx-font-size: 34px;
 }
 
-
+.lbl-err{
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
