@@ -4,38 +4,38 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.MainUiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="body-container" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stockapp.controllers.MainUiController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="22.0" prefHeight="110.0" prefWidth="434.0" styleClass="h1-text" text="Stockfort" textAlignment="CENTER">
          <font>
              <Font size="70.0" />
          </font>
      </Label>
-     <Pane layoutX="350.0" layoutY="166.0" prefHeight="350.0" prefWidth="350.0" styleClass="main-container">
+     <Pane layoutX="225.0" layoutY="173.0" prefHeight="350.0" prefWidth="600.0" styleClass="main-container">
          <children>
-             <Label fx:id="udvLabel" alignment="CENTER" layoutX="41.0" layoutY="22.0" prefHeight="99.0" prefWidth="268.0" styleClass="login-text" text="Üdvözöllek,">
+             <Label fx:id="udvLabel" alignment="CENTER" layoutX="25.0" layoutY="20.0" prefHeight="99.0" prefWidth="550.0" styleClass="login-text" text="Üdvözöllek,">
                  <font>
                      <Font size="30.0" />
                  </font>
              </Label>
-             <Button fx:id="rendFelvBtn" layoutX="50.0" layoutY="140.0" mnemonicParsing="false" onAction="#loadRendelesFelvetele" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelés felvétele">
+             <Button fx:id="rendFelvBtn" layoutX="175.0" layoutY="125.0" mnemonicParsing="false" onAction="#loadRendelesFelvetele" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelés felvétele">
                  <font>
                      <Font size="20.0" />
                  </font>
              </Button>
-             <Button fx:id="rendBtn" layoutX="50.0" layoutY="202.0" mnemonicParsing="false" onAction="#loadRendelesek" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelések">
+             <Button fx:id="rendBtn" layoutX="175.0" layoutY="203.0" mnemonicParsing="false" onAction="#loadRendelesek" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Rendelések">
                  <font>
                      <Font size="20.0" />
                  </font>
              </Button>
-             <Button fx:id="raktarBtn" layoutX="50.0" layoutY="263.0" mnemonicParsing="false" onAction="#loadRaktarkeszlet" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Raktárkészlet">
+             <Button fx:id="raktarBtn" layoutX="175.0" layoutY="279.0" mnemonicParsing="false" onAction="#loadRaktarkeszlet" prefHeight="50.0" prefWidth="250.0" styleClass="btn-main" text="Raktárkészlet">
                  <font>
                      <Font size="20.0" />
                  </font>
              </Button>
          </children>
      </Pane>
-     <Button fx:id="kijelentkezesBtn" onAction="#kijelentkezes" alignment="CENTER" layoutX="441.0" layoutY="537.0" prefHeight="55.0" prefWidth="168.0" styleClass="btn-none" text="Kilépés">
+     <Button fx:id="kijelentkezesBtn" alignment="CENTER" layoutX="441.0" layoutY="537.0" onAction="#kijelentkezes" prefHeight="55.0" prefWidth="168.0" styleClass="btn-none" text="Kilépés">
          <font>
              <Font size="30.0" />
          </font>
