@@ -66,6 +66,14 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <ChoiceBox layoutX="315.0" layoutY="212.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product" />
+                <Spinner layoutX="608.0" layoutY="276.0" prefHeight="44.0" prefWidth="119.0" styleClass="input-db">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="9999" min="0" />
+                    </valueFactory>
+                </Spinner>
+
+
             </children>
         </Pane>
         <Button fx:id="visszaBtn" layoutX="451.0" layoutY="533.0" mnemonicParsing="false" onAction="#visszaAction" prefHeight="55.0" prefWidth="148.0" styleClass="btn-none" text="Vissza">
