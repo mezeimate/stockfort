@@ -25,6 +25,19 @@ public class DataBaseConnection {
 
     }
 
+    public ResultSet getRaktarTermekekTable(){
+        try {
+            statement = conn.createStatement();
+            result = statement.executeQuery("SELECT raktar.darab,termekek.megnevezes FROM raktar INNER JOIN termekek ON raktar.termekid=termekek.id");
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+    }
+
     public ResultSet getKategoriaTabel(){
         try {
             statement = conn.createStatement();
@@ -194,7 +207,7 @@ public class DataBaseConnection {
             }
 
             if(vane){
-                statement.executeUpdate("INSERT INTO raktar (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+")",Statement.RETURN_GENERATED_KEYS);
+                statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+")",Statement.RETURN_GENERATED_KEYS);
             }
 
 
@@ -232,7 +245,7 @@ public class DataBaseConnection {
             }
 
             if(vane){
-                statement.executeUpdate("INSERT INTO raktar (megnevezes,termekid)"+" VALUES ("+megnevezes+","+kategoriaid+")",Statement.RETURN_GENERATED_KEYS);
+                statement.executeUpdate("INSERT INTO termekek (megnevezes,termekid)"+" VALUES ("+megnevezes+","+kategoriaid+")",Statement.RETURN_GENERATED_KEYS);
             }
 
 

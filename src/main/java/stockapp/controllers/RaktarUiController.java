@@ -16,9 +16,14 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import lombok.extern.java.Log;
 import org.tinylog.Logger;
+import stockapp.database.DatabaseRaktar;
+import stockapp.database.DatabaseTermekRaktar;
+import stockapp.model.DataBaseConnection;
 import stockapp.model.Raktar;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -45,6 +50,30 @@ public class RaktarUiController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void initialize() throws SQLException {
+        DataBaseConnection db = new DataBaseConnection();
+        ArrayList<DatabaseTermekRaktar> raktar = new ArrayList<>();
+        ResultSet result = db.getRaktarTermekekTable();
+
+        DatabaseTermekRaktar k = new DatabaseTermekRaktar();
+
+
+        while(result.next()){
+            k.setDatabaseTermekRaktarDarab(result.getInt("darab"));
+            k.setDatabaseTermekRaktarMegnevezes(result.getString("megnevezes"));
+            raktar.add(k);
+
+            k=new DatabaseTermekRaktar();
+
+        }
+
+        for(int i=0; i<raktar.size();i++){
+            System.out.println(raktar.get(i).getDatabaseTermekRaktarMegnevezes()+" | "+raktar.get(i).getDatabaseTermekRaktarDarab());
+        }
+
     }
 
     /*
