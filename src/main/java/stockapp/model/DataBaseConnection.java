@@ -4,6 +4,7 @@ import org.tinylog.Logger;
 
 import java.sql.*;
 import java.util.Date;
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class DataBaseConnection {
 
@@ -11,22 +12,35 @@ public class DataBaseConnection {
     Statement statement;
     ResultSet result;
 
+   /* private String databaseURL="jdbc:sqlserver://sql303.epizy.com:3306";
+    private String databaseAcc="epiz_30461573";
+    private String databasePass="afX17N82KY";
+    private String databaseName= "epiz_30461573_stockfort";
+    */
+
+
+    String connectionUrl = "jdbc:sqlserver://web199.sunwell.hu:1433;databaseName=c65matyaka;";
+
     public DataBaseConnection() {
-        String url = "jdbc:mariadb://localhost:3306/stockfort";
+       // String url = "jdbc:mariadb://localhost:3306/stockfort";
+
         try {
-            conn = DriverManager.getConnection(url, "root", "");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            DriverManager.registerDriver(new SQLServerDriver());
+
+            conn = DriverManager.getConnection(connectionUrl,"c65matyaka","vgcsR@aKWGB5");
 
             statement = conn.createStatement();
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 
     public ResultSet getRaktarTermekekTable(){
         try {
+
+            //conn = DriverManager.getConnection(connectionUrl,"c65matyaka","vgcsR@aKWGB5");
             statement = conn.createStatement();
             result = statement.executeQuery("SELECT raktar.darab,termekek.megnevezes FROM raktar INNER JOIN termekek ON raktar.termekid=termekek.id");
 
