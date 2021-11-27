@@ -27,6 +27,18 @@ public class DataBaseConnection {
         }
     }
 
+    public ResultSet getFelhaszRendelTermek(){
+        try{
+            statement = conn.createStatement();
+            result = statement.executeQuery("SELECT felhasznalo.nev,termekek.megnevezes,rendelesek.darab,rendelesek.datum FROM felhasznalo INNER JOIN rendelesek ON felhasznalo.id = rendelesek.felhasznaloid INNER JOIN termekek ON termekek.id=rendelesek.termekid ");
+
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+
+        return  result;
+    }
+
     public ResultSet getRaktarTermekekTable(){
         try {
             
