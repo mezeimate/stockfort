@@ -37,14 +37,14 @@ public class RendelesUiController {
     //@FXML DatePicker datumbe;
     @FXML TextField datumbe;
     @FXML TextField termekbe;
-    @FXML TextField mennyisegbe;
+    @FXML Spinner termekdbbe;
     @FXML Button mentesBtn;
     @FXML Button visszaBtn;
 
     FXMLLoader fxmlLoader;
 
     @FXML
-    public void visszaAction(ActionEvent event) throws IOException {
+    public void visszaHandleBtn(ActionEvent event) throws IOException {
         Logger.info("Főképernyő betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
         Parent root = fxmlLoader.load();
@@ -54,7 +54,7 @@ public class RendelesUiController {
     }
 
     @FXML
-    public void saveOrder() throws ParseException{}
+    public void mentesHandleBtn() throws ParseException{}
 
     /*
     ObservableList<Raktar> data;
