@@ -33,4 +33,15 @@ public class DatabaseFelhasznalo {
         return jelszo;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
+    public void setJelszo(String jelszo) {
+        this.jelszo = jelszo;
+    }
 }
