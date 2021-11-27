@@ -110,7 +110,7 @@ public class LogController {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
                 Parent root = fxmlLoader.load();
-                //fxmlLoader.<MainUiController>getController().setFelhNev(lognamein.getText() + "");
+                fxmlLoader.<MainUiController>getController().setFelhNev(lognamein.getText());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();
