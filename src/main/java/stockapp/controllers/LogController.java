@@ -153,7 +153,7 @@ public class LogController {
         if(!p.matches(passwdMatch))
             strong = false;
         return strong;
-    }-
+    }
 
     @FXML
     private void bezarasAction() {
