@@ -42,11 +42,18 @@ public class RaktarUiController {
     @FXML private TableColumn<Raktar, Integer> datumOszlop;
     @FXML Button visszaBtn;
 
+    String felhNev;
+
+    public void setFelhNev(String n){
+        this.felhNev = n;
+    }
+
     @FXML
     public void visszaAction(ActionEvent event) throws IOException {
         Logger.info("Főképernyő betöltése.");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
         Parent root = fxmlLoader.load();
+        fxmlLoader.<MainUiController>getController().setFelhNev(felhNev);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

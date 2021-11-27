@@ -41,21 +41,18 @@ public class RendelesekUiController {
 
     FXMLLoader fxmlLoader;
 
-    @FXML
-    public void loadRendelesFelvetele(ActionEvent event) throws IOException {
-        Logger.info("Rendelések felvétele oldal betöltése.");
-        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+    String felhNev;
+
+    public void setFelhNev(String n){
+        this.felhNev = n;
     }
 
     @FXML
     public void visszaAction(ActionEvent event) throws IOException {
         Logger.info("Főképernyő betöltése.");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainUI.fxml"));
         Parent root = fxmlLoader.load();
+        fxmlLoader.<MainUiController>getController().setFelhNev(felhNev);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

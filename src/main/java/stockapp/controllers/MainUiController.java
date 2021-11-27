@@ -28,36 +28,17 @@ public class MainUiController {
     @FXML Button raktarBtn;
     @FXML Button kijelentkezesBtn;
 
+    String felhnev;
+
     FXMLLoader fxmlLoader;
 
     public void setFelhNev(String nev) {
+        felhnev = nev;
         udvLabel.setText("Üdvözöllek, "+nev+"!");
     }
 
     @FXML
-    private void initialize() throws SQLException {
-        //Adatbázis teszteléshez
-        /*DataBaseConnection db = new DataBaseConnection();
-        db.insertKategoriaTable("Elektronikai");
-        ResultSet result = db.getKategoriaTabel();
-        ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
-        DatabaseKategoria k = new DatabaseKategoria();
-
-        while(result.next()){
-            //System.out.println(result.getInt("id")+" | "+result.getString("kategorianev"));
-             k.setKageoriaID(result.getInt("id"));
-             k.setKageoriaNev(result.getString("kategorianev"));
-             kategoriak.add(k);
-
-             k=new DatabaseKategoria();
-
-        }
-
-        for(int i=0; i<kategoriak.size();i++){
-            System.out.println(kategoriak.get(i).getKategoriadID()+" | "+kategoriak.get(i).getKategoriaNev());
-        }
-        */
-
+    private void initialize(){
     }
 
     @FXML
@@ -65,6 +46,7 @@ public class MainUiController {
         Logger.info("Rendelések felvétele oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
         Parent root = fxmlLoader.load();
+        fxmlLoader.<RendelesUiController>getController().setFelhNev(felhnev);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -75,6 +57,7 @@ public class MainUiController {
         Logger.info("Rendelések oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesekUI.fxml"));
         Parent root = fxmlLoader.load();
+        fxmlLoader.<RendelesekUiController>getController().setFelhNev(felhnev);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -85,6 +68,7 @@ public class MainUiController {
         Logger.info("Raktár oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/raktarUI.fxml"));
         Parent root = fxmlLoader.load();
+        fxmlLoader.<RaktarUiController>getController().setFelhNev(felhnev);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
