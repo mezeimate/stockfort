@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LogController {
 
@@ -83,6 +85,29 @@ public class LogController {
 
     @FXML
     private void bezarasAction() {
-        // TO DO close the application
+        Logger.info("ALkalmazas bezarasa!");
+        Stage stage = (Stage) bezarasBtn.getScene().getWindow();
+        stage.close();
+    }
+
+    public String passwdGenerator(String o){
+        String generatedPassword = "";
+        try {
+            //MessageDigest példány létrehozása
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Jelszó hozzáadása a példányhoz
+            md.update(o.getBytes());
+            //Lekérjük a hash byteokat
+            byte[] bytes = md.digest();
+            //Byte típusi tombbe tároljuk a megkapott decimális értéket
+            //Konvertálás
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++){
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //a kész kód lekérése
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e){e.printStackTrace();}
+        return generatedPassword;
     }
 }
