@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 
@@ -28,6 +29,11 @@ public class LogController {
     @FXML
     Button bezarasBtn;
 
+    @FXML
+    Button regisztracioButton;
+
+    final private Tooltip tooltip = new Tooltip();
+
     /**
      *  Secure Password requirements
      * - start-of-string
@@ -40,6 +46,15 @@ public class LogController {
      * - end-of-string
      */
     private String passwdMatch = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!?@#$%^&+=])(?=\\S+$).{8,}$";
+
+    @FXML
+    private void initialize(){
+        tooltip.setText("A jelszó csak betűvel kezdődhet!\n" +
+                "Tartalmaznia kell kisbetűt, nagybetűt, számot, speciális karaktert!\n" +
+                "Nem tartalmazhat whitespace-t!\n" +
+                "Legalább 8 karakternek kell lennie!");
+        regisztracioButton.setTooltip(tooltip);
+    }
 
     // login: admin admin
     @FXML
@@ -59,6 +74,11 @@ public class LogController {
         else{
             Logger.warn("Hibas felhasznalonev vagy jelszo!");
         }
+    }
+    
+    @FXML
+    private void handleRegButt(ActionEvent event) {
+
     }
 
     @FXML
