@@ -33,7 +33,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="regisztracioButton" alignment="CENTER" layoutX="262.0" layoutY="286.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" styleClass="btn-login" text="Regisztráció">
+            <Button fx:id="regisztracioButton" alignment="CENTER" layoutX="262.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleRegButt" prefHeight="50.0" prefWidth="160.0" styleClass="btn-login" text="Regisztráció">
                <font>
                   <Font size="20.0" />
                </font>
