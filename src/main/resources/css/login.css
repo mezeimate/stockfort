@@ -51,3 +51,10 @@
     -fx-text-fill: red;
     -fx-font-weight: bold;
 }
+
+.tooltip{
+    -fx-background-radius: 10px;
+    -fx-background-color: linear-gradient(to bottom right,  -fx-third-color, -fx-second-color);
+    -fx-text-fill: #6a1111;
+    -fx-font-weight: bold;
+}
