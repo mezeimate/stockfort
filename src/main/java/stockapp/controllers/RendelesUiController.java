@@ -9,10 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
+import stockapp.database.DatabaseKategoria;
+import stockapp.model.DataBaseConnection;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static java.lang.String.*;
 
 /**
  * A program rendelés felvétele képernyőjének megvalósítása.
@@ -50,15 +57,38 @@ public class RendelesUiController {
     }
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
+
+
+        DataBaseConnection db = new DataBaseConnection();
+        ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
+        ResultSet result = db.getKategoriaTabel();
+
+
+
+        DatabaseKategoria elem = new DatabaseKategoria();
+
+        while(result.next()){
+            elem.setKageoriaID(result.getInt("id"));
+            elem.setKageoriaNev(result.getString("kategorianev"));
+            kategoriak.add(elem);
+
+            elem=new DatabaseKategoria();
+
+        }
+
+        for(int i=0; i<kategoriak.size();i++){
+            System.out.println(kategoriak.get(i).getKategoriadID()+" | "+kategoriak.get(i).getKategoriaNev());
+        }
+
+
         datumbe.setText(formatter.format(date));
 
         kategoriabe.getItems().addAll(
-                "egy",
-                "ketto",
-                "harom",
-                "negy",
-                "ot"
+                kategoriak.get(0).getKategoriaNev(),
+                kategoriak.get(1).getKategoriaNev(),
+                kategoriak.get(2).getKategoriaNev(),
+                kategoriak.get(3).getKategoriaNev()
         );
         kategoriabe.getSelectionModel().selectFirst();
     }
@@ -77,10 +107,16 @@ public class RendelesUiController {
     @FXML
     public void mentesHandleBtn(){
 
+        DataBaseConnection db = new DataBaseConnection();
+        int test = kategoriabe.getSelectionModel().getSelectedIndex();
+
+        db.insertRendelesekTable(2,2, datumbe.getText(),1,1);
 
         String nev = nevbe.getText();
         String termek = termekbe.getText();
         int termekdb = (int) termekdbbe.getValue();
+
+
     }
 
     /*

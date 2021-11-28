@@ -1,5 +1,6 @@
 package stockapp.model;
 
+import javafx.scene.control.TextField;
 import org.tinylog.Logger;
 
 import java.sql.*;
@@ -144,6 +145,18 @@ public class DataBaseConnection {
         return result;
     }
 
+    public ResultSet getRaktarByTermek(int termekid){
+        try {
+            statement = conn.createStatement();
+            result = statement.executeQuery("SELECT raktar.id FROM raktar WHERE "+termekid+" = raktar.termekid;");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+    }
+
     public void insertRaktarTable(int termekid,int darab){
         try {
             statement = conn.createStatement();
@@ -207,23 +220,13 @@ public class DataBaseConnection {
 
     }
 
-    public void insertRendelesekTable(int termekid, int darab, Date datum,int felhasznaloid,int raktarid){
+    public void insertRendelesekTable(int termekid, int darab, String datum,int felhasznaloid,int raktarid){
         try {
             statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM rendelesek");
-            boolean vane=true;
 
-            while (result.next()) {
-                int n = result.getInt("termekid");
-                if (n == termekid) {
-                    Logger.info("Van ilyen termék ID");
-                    vane = false;
-                }
-            }
 
-            if(vane){
-                statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+")",Statement.RETURN_GENERATED_KEYS);
-            }
+            statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+","+datum+","+felhasznaloid+","+raktarid+")",Statement.RETURN_GENERATED_KEYS);
+
 
 
         } catch (SQLException throwables) {
@@ -268,8 +271,5 @@ public class DataBaseConnection {
             throwables.printStackTrace();
         }
     }
-
-
-
 
 }
