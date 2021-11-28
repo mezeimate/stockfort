@@ -18,14 +18,11 @@ public class DatabaseKategoria {
             this.id= result.getInt("id");
             this.kategorianev = result.getString("kategorianev");
         }
-
     }
-
 
     public int getKategoriadID(){
         return id;
     }
-
 
     public String getKategoriaNev(){
         return kategorianev;

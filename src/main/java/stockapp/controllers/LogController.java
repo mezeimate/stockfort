@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import stockapp.database.DatabaseFelhasznalo;
-import stockapp.database.DatabaseTermekRaktar;
 import stockapp.model.DataBaseConnection;
 
 import java.io.IOException;
@@ -19,7 +18,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LogController {
 
@@ -97,7 +95,6 @@ public class LogController {
         return vissza;
     }
 
-    // login: admin admin
     @FXML
     private void handlelogButton(ActionEvent event) throws IOException, SQLException {
         loginError.setVisible(false);
