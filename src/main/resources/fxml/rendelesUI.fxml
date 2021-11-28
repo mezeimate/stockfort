@@ -29,7 +29,7 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nevbe" layoutX="315.0" layoutY="91.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-name">
+                <TextField fx:id="nevbe" alignment="CENTER" layoutX="315.0" layoutY="91.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-name">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -51,7 +51,7 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="termekbe" layoutX="315.0" layoutY="275.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product">
+                <TextField fx:id="termekbe" alignment="CENTER" layoutX="315.0" layoutY="275.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -66,12 +66,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="kategoriabe" layoutX="315.0" layoutY="212.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product" />
                 <Spinner fx:id="termekdbbe" layoutX="608.0" layoutY="276.0" prefHeight="44.0" prefWidth="119.0" styleClass="input-db">
                     <valueFactory>
-                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="9999" min="0" />
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="9999" min="1" />
                     </valueFactory>
                 </Spinner>
+            <ComboBox fx:id="kategoriabe" layoutX="315.0" layoutY="212.0" prefHeight="45.0" prefWidth="270.0" styleClass="input-product" />
 
 
             </children>

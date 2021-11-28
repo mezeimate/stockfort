@@ -6,27 +6,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
-import stockapp.database.DatabaseKategoria;
-import stockapp.model.DataBaseConnection;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * A program fő képernyőjének megvalósítása.
  */
 public class MainUiController {
 
-    @FXML Label udvLabel;
-    @FXML Button rendFelvBtn;
-    @FXML Button rendBtn;
-    @FXML Button raktarBtn;
-    @FXML Button kijelentkezesBtn;
+    @FXML
+    Label udvLabel;
+    @FXML
+    Button rendFelvBtn;
+    @FXML
+    Button rendBtn;
+    @FXML
+    Button raktarBtn;
+    @FXML
+    Button kijelentkezesBtn;
 
     String felhnev;
 

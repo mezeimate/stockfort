@@ -34,10 +34,15 @@
     -fx-background-radius: 30px;
 }
 
-
 .table-name {
-    -fx-text-fill: red;
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
 }
+.table-count{
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+}
+
 .table-container {
     -fx-background-color: none;
     -fx-border-color: -fx-third-color;
@@ -49,7 +54,7 @@
     -fx-background-color: -fx-second-color;
 }
 .table-container .table-cell{
-    -fx-border-color: red;
+    -fx-border-color: black;
     -fx-padding: 2 0 2 10px;
 }
 
@@ -94,6 +99,9 @@
     -fx-background-radius: 7px 7px 0px 0px;
     -fx-background-insets: 0 11px 0 0;
     -fx-padding: 0 0 5px 0;
+}
+.table-row-cell:selected{
+    -fx-background-color: lightgray;
 }
 
 .table-view .column-header {

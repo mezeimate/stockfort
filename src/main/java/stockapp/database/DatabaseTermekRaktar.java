@@ -3,9 +3,10 @@ package stockapp.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@lombok.Data
 public class DatabaseTermekRaktar {
     String termekMegnevezes;
-    int raktarDarab;
+    Integer raktarDarab;
 
     public DatabaseTermekRaktar(){
         this.termekMegnevezes= "";
@@ -36,5 +37,11 @@ public class DatabaseTermekRaktar {
         this.raktarDarab=darab;
     }
 
-
+    @Override
+    public String toString() {
+        return "DatabaseTermekRaktar{" +
+                "termekMegnevezes='" + termekMegnevezes + '\'' +
+                ", raktarDarab=" + raktarDarab +
+                '}';
+    }
 }

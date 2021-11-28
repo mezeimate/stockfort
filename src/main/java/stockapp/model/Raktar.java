@@ -7,23 +7,19 @@ import java.util.Date;
  */
 @lombok.Data
 public class Raktar {
-    String nevOszlop;
     String termekOszlop;
     int mennyisegOszlop;
-    Date datumOszlop;
 
     /**
      * A Raktar osztály konstruktora.
      */
-    public Raktar(String nevOszlop, String termekOszlop, int mennyisegOszlop, Date datumOszlop) {
+    public Raktar(String termekOszlop, int mennyisegOszlop) {
         //this.nevOszlop = new SimpleStringProperty(nevOszlop);
         //this.termekOszlop = new SimpleStringProperty(termekOszlop);
         //this.mennyisegOszlop = new SimpleIntegerProperty(mennyisegOszlop);
         //this.datumOszlop = new SimpleObjectProperty<Date>(datumOszlop);
-        this.nevOszlop = nevOszlop;
         this.termekOszlop = termekOszlop;
         this.mennyisegOszlop = mennyisegOszlop;
-        this.datumOszlop = datumOszlop;
     }
 
     /**
@@ -32,10 +28,8 @@ public class Raktar {
     @Override
     public String toString() {
         return "tmp{" +
-                "nev='" + nevOszlop + '\'' +
                 ", termek='" + termekOszlop + '\'' +
                 ", mennyiseg=" + mennyisegOszlop +
-                ", datum=" + datumOszlop +
                 '}'+"\r\n";
     }
 }
