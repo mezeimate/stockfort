@@ -9,13 +9,13 @@ public class DatabaseFelhaszRendelTermek {
     String nevOszlop;
     String termekOszlop;
     int mennyisegOszlop;
-    Date datumOszlop;
+    String datumOszlop;
 
     public DatabaseFelhaszRendelTermek(){
         this.nevOszlop = "";
         this.termekOszlop = "";
         this.mennyisegOszlop = 1;
-        this.datumOszlop = new Date(System.currentTimeMillis());
+        this.datumOszlop ="";
     }
 
     public DatabaseFelhaszRendelTermek(ResultSet result) throws SQLException {
@@ -23,7 +23,7 @@ public class DatabaseFelhaszRendelTermek {
             this.nevOszlop= result.getString("nev");
             this.termekOszlop = result.getString("megnevezes");
             this.mennyisegOszlop = result.getInt("darab");
-            this.datumOszlop = result.getDate("datum");
+            this.datumOszlop = result.getString("datum");
         }
     }
 
