@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import stockapp.database.DatabaseKategoria;
+import stockapp.database.DatabaseTermek;
+import stockapp.database.DatabaseTermekek;
 import stockapp.model.DataBaseConnection;
 
 import java.io.IOException;
@@ -33,7 +35,7 @@ public class RendelesUiController {
     @FXML
     TextField datumbe;
     @FXML
-    TextField termekbe;
+    ComboBox termekbe;
     @FXML
     Spinner termekdbbe;
     @FXML
@@ -87,13 +89,37 @@ public class RendelesUiController {
 
         System.out.println("felnév: "+felhNev);
 
-        kategoriabe.getItems().addAll(
-                kategoriak.get(0).getKategoriaNev(),
-                kategoriak.get(1).getKategoriaNev(),
-                kategoriak.get(2).getKategoriaNev(),
-                kategoriak.get(3).getKategoriaNev()
-        );
+        for (DatabaseKategoria nebular : kategoriak)
+        {
+            kategoriabe.getItems().add(nebular.getKategoriaNev());
+        }
+
+
         kategoriabe.getSelectionModel().selectFirst();
+
+        DataBaseConnection db2 = new DataBaseConnection();
+        ResultSet dolgok = db2.getRaktarByTermek(output+2);
+        ArrayList<DatabaseTermek> termekeklista = new ArrayList<>();
+        DatabaseTermek termekek = new DatabaseTermek();
+
+        while(dolgok.next()){
+            termekek.setDatabaseTermekNev(dolgok.getString("megnevezes"));
+            termekeklista.add(termekek);
+
+            termekek=new DatabaseTermek();
+
+        }
+
+        for(int i=0; i<termekeklista.size();i++){
+            System.out.println(termekeklista.get(i).getDatabaseTermekNev());
+        }
+
+        for (DatabaseTermek nebular : termekeklista)
+        {
+            termekbe.getItems().add(nebular.getDatabaseTermekNev());
+        }
+
+
     }
 
     @FXML
@@ -120,7 +146,7 @@ public class RendelesUiController {
         db.insertRendelesekTable(2,(int)termekdbbe.getValue(), datumbe.getText(),1,kategoriaRaktar);
 
         String nev = nevbe.getText();
-        String termek = termekbe.getText();
+
         int termekdb = (int) termekdbbe.getValue();
 
 

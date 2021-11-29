@@ -10,6 +10,10 @@ public class DatabaseTermekek {
 
     }
 
+    public DatabaseTermekek(String megnevezes){
+        this.megnevezes = megnevezes;
+    }
+
     public DatabaseTermekek(int id,String megnevezes,int kategoriaid){
         this.id=id;
         this.megnevezes=megnevezes;
@@ -32,7 +36,7 @@ public class DatabaseTermekek {
         this.id=id;
     }
 
-    public void setDatabaseTermekekID(String megnevezes){
+    public void setDatabaseTermekekMegnev(String megnevezes){
         this.megnevezes=megnevezes;
     }
 
