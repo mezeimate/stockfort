@@ -51,6 +51,8 @@ public class RendelesekUiController {
 
     String felhNev;
 
+    int felhasznaloID;
+
     public void setFelhNev(String n){
         this.felhNev = n;
     }
@@ -76,9 +78,7 @@ public class RendelesekUiController {
         termekOszlop.setCellValueFactory(new PropertyValueFactory<>("termekOszlop"));
         mennyisegOszlop.setCellValueFactory(new PropertyValueFactory<>("mennyisegOszlop"));
         datumOszlop.setCellValueFactory(new PropertyValueFactory<>("datumOszlop"));
-        //DatabaseLoad();
-
-
+        DatabaseLoad();
     }
 
     @FXML
@@ -95,26 +95,20 @@ public class RendelesekUiController {
 
     public void felhasznaloIDBack() throws SQLException {
         DataBaseConnection db = new DataBaseConnection();
-        System.out.println(felhNev);
-        ResultSet getIDD = db.getFelhasznaloID(felhNev);
-        int getFelhID = getIDD.getInt("id");
-        Logger.warn(getFelhID);
+        int getFelhID = -1;
+        ResultSet id = db.getFelhasznaloID(felhNev);
+        while(id.next()){
+            getFelhID = id.getInt("id");
+        }
+        felhasznaloID = getFelhID;
     }
 
     public void DatabaseLoad() throws SQLException {
-
         DataBaseConnection db = new DataBaseConnection();
         adatok = new ArrayList<>();
         data = FXCollections.observableArrayList();
-        ResultSet getID = db.getFelhasznaloID(felhNev);
-        System.out.println(felhNev);
-        int getFelhID=0;
-        while(getID.next()){
-            getFelhID=getID.getInt("id");
-        }
-        System.out.println("Felhid: "+getFelhID);
-
-        ResultSet result = db.getFelhaszRendelTermek(getFelhID);
+        System.out.println(felhasznaloID +" !!!!!!!!!!");
+        ResultSet result = db.getFelhaszRendelTermek(felhasznaloID);
 
         DatabaseFelhaszRendelTermek k = new DatabaseFelhaszRendelTermek();
         while(result.next()){
