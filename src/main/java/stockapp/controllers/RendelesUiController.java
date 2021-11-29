@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import org.tinylog.Logger;
 import stockapp.database.DatabaseKategoria;
 import stockapp.database.DatabaseTermek;
@@ -52,8 +53,6 @@ public class RendelesUiController {
     private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private final Date date = new Date(System.currentTimeMillis());
 
-    //System.out.println(formatter.format(date));
-
     String felhNev;
 
     public void setFelhNev(String n){
@@ -62,62 +61,54 @@ public class RendelesUiController {
 
     @FXML
     private void initialize() throws SQLException {
-        nevbe.setEditable(false);
-        nevbe.setText(felhNev);
+
         DataBaseConnection db = new DataBaseConnection();
         ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
         ResultSet result = db.getKategoriaTabel();
 
-        int output = kategoriabe.getSelectionModel().getSelectedIndex();
-        System.out.println(output);
-
         DatabaseKategoria elem = new DatabaseKategoria();
-
         while(result.next()){
             elem.setKageoriaID(result.getInt("id"));
             elem.setKageoriaNev(result.getString("kategorianev"));
             kategoriak.add(elem);
-
-            elem=new DatabaseKategoria();
+            elem = new DatabaseKategoria();
 
         }
-
         datumbe.setText(formatter.format(date));
-
-        System.out.println("felnév: "+felhNev);
 
         for (DatabaseKategoria nebular : kategoriak) {
             kategoriabe.getItems().add(nebular.getKategoriaNev());
         }
-
         kategoriabe.getSelectionModel().selectFirst();
+        termeketFrissit(kategoriabe.getValue().toString());
 
-        //DataBaseConnection db2 = new DataBaseConnection();
-        ResultSet dolgok = db.getRaktarByTermek(output+2);
+        kategoriabe.valueProperty().addListener(new ChangeListener<String>() {
+            @SneakyThrows
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                //Previous Value: t
+                //Current Value: t1
+                termeketFrissit(t1);
+            }
+        });
+    }
+
+    public void termeketFrissit(String t1) throws SQLException {
+        DataBaseConnection db = new DataBaseConnection();
+        ResultSet termekekRes = db.getRaktarByTermek(t1);
         ArrayList<DatabaseTermek> termekeklista = new ArrayList<>();
         DatabaseTermek termekek = new DatabaseTermek();
 
-        // valtozast nézi a listener, csak azokat a termékeket kell lekérni amelyik kategória ki van valasztva    !!!!!!
-        // t1 valtozo azt adja vissza melyik kategória van kivalasztva
-        kategoriabe.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue ov, String t, String t1) {
-                System.out.println("Previous Value: "+t);
-                System.out.println("Current Value: "+t1);
-            }
-        });
-
-        while(dolgok.next()){
-            termekek.setDatabaseTermekNev(dolgok.getString("megnevezes"));
+        while(termekekRes.next()){
+            termekek.setDatabaseTermekNev(termekekRes.getString("megnevezes"));
             termekeklista.add(termekek);
-
             termekek = new DatabaseTermek();
         }
-
+        termekbe.getItems().clear();
         for (DatabaseTermek nebular : termekeklista) {
             termekbe.getItems().add(nebular.getDatabaseTermekNev());
         }
-        
+        termekbe.getSelectionModel().selectFirst();
     }
 
     @FXML

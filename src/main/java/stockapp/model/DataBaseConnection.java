@@ -140,7 +140,7 @@ public class DataBaseConnection {
             }
 
             if(vane){
-                statement.executeUpdate("INSERT INTO felhasznalo (nev,jelszo)"+" VALUES ("+nev+","+jelszo+")",Statement.RETURN_GENERATED_KEYS);
+                statement.executeUpdate("INSERT INTO felhasznalo (nev,jelszo)"+" VALUES (\""+nev+"\",\""+jelszo+"\")",Statement.RETURN_GENERATED_KEYS);
             }
 
 
@@ -161,10 +161,10 @@ public class DataBaseConnection {
         return result;
     }
 
-    public ResultSet getRaktarByTermek(int kategoriaID){
+    public ResultSet getRaktarByTermek(String katnev){
         try {
             statement = conn.createStatement();
-            result = statement.executeQuery("SELECT megnevezes From termekek WHERE kategoriaid ="+kategoriaID+";");
+            result = statement.executeQuery("SELECT termekek.megnevezes FROM termekek, kategoria WHERE termekek.kategoriaid = kategoria.id AND kategoria.kategorianev = \""+katnev+"\";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

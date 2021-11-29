@@ -130,23 +130,19 @@ public class LogController {
         loginError.setVisible(false);
         Integer letezike = letezik(lognamein.getText());
         if(letezike == null && strongpass(passwordin.getText())){
-
-            // INSERT INTO KELL MAJD név és jelszót kurelja bele
-            //lognamein.getText()
-            //passwdGenerator(passwordin.getText())
-
             DataBaseConnection db = new DataBaseConnection();
-
-            db.insertFelhasznaloTable(lognamein.getText(),(String) passwdGenerator(passwordin.getText()));
-
+            db.insertFelhasznaloTable((String) lognamein.getText(),(String) passwdGenerator(passwordin.getText()));
             loginError.setText("Sikeres regisztráció!");
-            loginError.setVisible(true);
         }
-        else{
+        else if(letezike != null){
             Logger.warn("Felhasználó már létezik!");
             loginError.setText("Felhasználó már létezik!");
-            loginError.setVisible(true);
         }
+        else if(!strongpass(passwordin.getText())){
+            Logger.warn("A jelszó nem felel meg a követelményeknek!");
+            loginError.setText("A jelszó nem felel meg a követelményeknek!");
+        }
+        loginError.setVisible(true);
     }
 
     private boolean strongpass(String p){
@@ -185,5 +181,4 @@ public class LogController {
         }
         return generatedPassword;
     }
-
 }
