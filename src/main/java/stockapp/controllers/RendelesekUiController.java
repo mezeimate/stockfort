@@ -80,14 +80,14 @@ public class RendelesekUiController {
         DataBaseConnection db = new DataBaseConnection();
         adatok = new ArrayList<>();
         data = FXCollections.observableArrayList();
-        ResultSet result = db.getRaktarTermekekTable();
+        ResultSet result = db.getFelhaszRendelTermek();
 
         DatabaseFelhaszRendelTermek k = new DatabaseFelhaszRendelTermek();
         while(result.next()){
             k.setNevOszlop(result.getString("nev"));
             k.setTermekOszlop(result.getString("megnevezes"));
             k.setMennyisegOszlop(result.getInt("darab"));
-            k.setDatumOszlop(result.getDate("datum"));
+            k.setDatumOszlop(result.getString("datum"));
             adatok.add(k);
             k = new DatabaseFelhaszRendelTermek();
         }
@@ -95,9 +95,9 @@ public class RendelesekUiController {
             System.out.println(adatok.get(i).toString());
         }
 
-        //rendelesekTab.getItems().clear();
-        //data.addAll(FXCollections.observableArrayList(adatok));
-        //rendelesekTab.setItems(data);
+        rendelesekTab.getItems().clear();
+        data.addAll(FXCollections.observableArrayList(adatok));
+        rendelesekTab.setItems(data);
 
     }
 
