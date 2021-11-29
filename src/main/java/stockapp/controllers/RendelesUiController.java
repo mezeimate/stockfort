@@ -50,6 +50,8 @@ public class RendelesUiController {
 
     FXMLLoader fxmlLoader;
 
+    int felhasznaloID;
+
     private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private final Date date = new Date(System.currentTimeMillis());
 
@@ -93,6 +95,16 @@ public class RendelesUiController {
         });
     }
 
+    public void felhasznaloIDBack() throws SQLException {
+        DataBaseConnection db = new DataBaseConnection();
+        int getFelhID = -1;
+        ResultSet id = db.getFelhasznaloID(felhNev);
+        while(id.next()){
+            getFelhID = id.getInt("id");
+        }
+        felhasznaloID = getFelhID;
+    }
+
     public void termeketFrissit(String t1) throws SQLException {
         DataBaseConnection db = new DataBaseConnection();
         ResultSet termekekRes = db.getRaktarByTermek(t1);
@@ -123,19 +135,17 @@ public class RendelesUiController {
     }
 
     @FXML
-    public void mentesHandleBtn(){
-
+    public void mentesHandleBtn() throws SQLException {
         DataBaseConnection db = new DataBaseConnection();
-        System.out.println(datumbe.getText());
-
-        int kategoriaRaktar = kategoriabe.getSelectionModel().getSelectedIndex()+1;
-        System.out.println(kategoriaRaktar);
-
-        db.insertRendelesekTable(2,(int)termekdbbe.getValue(), datumbe.getText(),1,kategoriaRaktar,nevbe.getText());
-
-        String nev = nevbe.getText();
-
-        int termekdb = (int) termekdbbe.getValue();
-
+        //int kategoriaRaktar = kategoriabe.getSelectionModel().getSelectedIndex()+1;
+        //lekérdezés adott kiválasztott termék IDje
+        //UPDATE
+        int aktTerm = 0;
+        ResultSet termid = db.getTermekID((String)termekbe.getValue());
+        while(termid.next()){
+            aktTerm = termid.getInt("id");
+        }
+        //System.out.println(aktTerm+" "+(Integer)termekdbbe.getValue()+" "+datumbe.getText()+" "+felhasznaloID+" "+nevbe.getText());
+        db.insertRendelesekTable(aktTerm, (Integer)termekdbbe.getValue(), datumbe.getText(), felhasznaloID, nevbe.getText());
     }
 }
