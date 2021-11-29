@@ -145,10 +145,10 @@ public class DataBaseConnection {
         return result;
     }
 
-    public ResultSet getRaktarByTermek(int termekid){
+    public ResultSet getRaktarByTermek(int kategoriaID){
         try {
             statement = conn.createStatement();
-            result = statement.executeQuery("SELECT raktar.id FROM raktar WHERE "+termekid+" = raktar.termekid;");
+            result = statement.executeQuery("SELECT megnevezes From termekek WHERE kategoriaid ="+kategoriaID+";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
