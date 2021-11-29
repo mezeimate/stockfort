@@ -58,13 +58,14 @@ public class RendelesUiController {
 
     @FXML
     private void initialize() throws SQLException {
-
-
+        nevbe.setEditable(false);
+        nevbe.setText(felhNev);
         DataBaseConnection db = new DataBaseConnection();
         ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
         ResultSet result = db.getKategoriaTabel();
 
-
+        int output = kategoriabe.getSelectionModel().getSelectedIndex();
+        System.out.println(output);
 
         DatabaseKategoria elem = new DatabaseKategoria();
 
@@ -83,6 +84,8 @@ public class RendelesUiController {
 
 
         datumbe.setText(formatter.format(date));
+
+        System.out.println("felnév: "+felhNev);
 
         kategoriabe.getItems().addAll(
                 kategoriak.get(0).getKategoriaNev(),
@@ -108,13 +111,18 @@ public class RendelesUiController {
     public void mentesHandleBtn(){
 
         DataBaseConnection db = new DataBaseConnection();
-        int test = kategoriabe.getSelectionModel().getSelectedIndex();
+        System.out.println(datumbe.getText());
 
-        db.insertRendelesekTable(2,2, datumbe.getText(),1,1);
+
+        int kategoriaRaktar = kategoriabe.getSelectionModel().getSelectedIndex()+1;
+        System.out.println(kategoriaRaktar);
+
+        db.insertRendelesekTable(2,(int)termekdbbe.getValue(), datumbe.getText(),1,kategoriaRaktar);
 
         String nev = nevbe.getText();
         String termek = termekbe.getText();
         int termekdb = (int) termekdbbe.getValue();
+
 
 
     }

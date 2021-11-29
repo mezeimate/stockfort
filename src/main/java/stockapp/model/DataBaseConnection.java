@@ -220,18 +220,30 @@ public class DataBaseConnection {
 
     }
 
-    public void insertRendelesekTable(int termekid, int darab, String datum,int felhasznaloid,int raktarid){
+    public void insertRendelesekTable(int termekid, int darab, String datum, int felhasznaloid, int raktarid){
         try {
             statement = conn.createStatement();
 
-
-            statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+","+datum+","+felhasznaloid+","+raktarid+")",Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+",'"+datum+"',"+felhasznaloid+","+raktarid+")");
 
 
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public ResultSet getTermekByID(int id){
+        try {
+            statement = conn.createStatement();
+            result = statement.executeQuery("SELECT id,megnevezes FROM termekek");
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
     }
 
     public ResultSet getTermekekTabel(){

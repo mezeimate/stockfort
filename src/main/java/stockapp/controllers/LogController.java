@@ -135,6 +135,10 @@ public class LogController {
             //lognamein.getText()
             //passwdGenerator(passwordin.getText())
 
+            DataBaseConnection db = new DataBaseConnection();
+
+            db.insertFelhasznaloTable(lognamein.getText(),(String) passwdGenerator(passwordin.getText()));
+
             loginError.setText("Sikeres regisztráció!");
             loginError.setVisible(true);
         }
