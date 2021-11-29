@@ -76,11 +76,45 @@ public class RendelesekUiController {
         termekOszlop.setCellValueFactory(new PropertyValueFactory<>("termekOszlop"));
         mennyisegOszlop.setCellValueFactory(new PropertyValueFactory<>("mennyisegOszlop"));
         datumOszlop.setCellValueFactory(new PropertyValueFactory<>("datumOszlop"));
+        //DatabaseLoad();
+
+
+    }
+
+    @FXML
+    public void handleRendFelBtn(ActionEvent event) throws IOException {
+        Logger.info("Rendelések felvétele oldal betöltése.");
+        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
+        Parent root = fxmlLoader.load();
+        fxmlLoader.<RendelesUiController>getController().setFelhNev(felhNev);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
+    public void felhasznaloIDBack() throws SQLException {
+        DataBaseConnection db = new DataBaseConnection();
+        System.out.println(felhNev);
+        ResultSet getIDD = db.getFelhasznaloID(felhNev);
+        int getFelhID = getIDD.getInt("id");
+        Logger.warn(getFelhID);
+    }
+
+    public void DatabaseLoad() throws SQLException {
 
         DataBaseConnection db = new DataBaseConnection();
         adatok = new ArrayList<>();
         data = FXCollections.observableArrayList();
-        ResultSet result = db.getFelhaszRendelTermek();
+        ResultSet getID = db.getFelhasznaloID(felhNev);
+        System.out.println(felhNev);
+        int getFelhID=0;
+        while(getID.next()){
+            getFelhID=getID.getInt("id");
+        }
+        System.out.println("Felhid: "+getFelhID);
+
+        ResultSet result = db.getFelhaszRendelTermek(getFelhID);
 
         DatabaseFelhaszRendelTermek k = new DatabaseFelhaszRendelTermek();
         while(result.next()){
@@ -99,17 +133,6 @@ public class RendelesekUiController {
         data.addAll(FXCollections.observableArrayList(adatok));
         rendelesekTab.setItems(data);
 
-    }
-
-    @FXML
-    public void handleRendFelBtn(ActionEvent event) throws IOException {
-        Logger.info("Rendelések felvétele oldal betöltése.");
-        fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
-        Parent root = fxmlLoader.load();
-        fxmlLoader.<RendelesUiController>getController().setFelhNev(felhNev);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 
     /*

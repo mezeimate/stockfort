@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * A program fő képernyőjének megvalósítása.
@@ -54,11 +55,13 @@ public class MainUiController {
     }
 
     @FXML
-    public void loadRendelesek(ActionEvent event) throws IOException {
+    public void loadRendelesek(ActionEvent event) throws IOException, SQLException {
         Logger.info("Rendelések oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesekUI.fxml"));
         Parent root = fxmlLoader.load();
         fxmlLoader.<RendelesekUiController>getController().setFelhNev(felhnev);
+        fxmlLoader.<RendelesekUiController>getController().felhasznaloIDBack();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

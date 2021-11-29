@@ -8,21 +8,23 @@ public class DatabaseRendelesek {
     int id;
     int termekid;
     int darab;
-    Date datum;
+    String datum;
     int felhasznaloid;
     int raktarid;
+    String nev;
 
     public DatabaseRendelesek(){
 
     }
 
-    public DatabaseRendelesek(int id, int termekid, int darab, Date datum, int felhasznaloid, int raktarid){
+    public DatabaseRendelesek(int id, int termekid, int darab, String datum, int felhasznaloid, int raktarid, String nev){
         this.id = id;
         this.termekid = termekid;
         this.darab=darab;
         this.datum = datum;
         this.felhasznaloid = felhasznaloid;
         this.raktarid = raktarid;
+        this.nev = nev;
     }
 
     public int getDatabaseRendelesekID(){
@@ -37,7 +39,7 @@ public class DatabaseRendelesek {
         return darab;
     }
 
-    public Date getDatabaseRendelesekDatum(){
+    public String getDatabaseRendelesekDatum(){
         return datum;
     }
 
@@ -61,7 +63,7 @@ public class DatabaseRendelesek {
         this.darab=darab;
     }
 
-    public void setDatabaseRendelesekDatum(Date datum){
+    public void setDatabaseRendelesekDatum(String datum){
         this.datum=datum;
     }
 
@@ -72,5 +74,14 @@ public class DatabaseRendelesek {
     public void setDatabaseRendelesekRaktarID(int raktarid){
         this.raktarid=raktarid;
     }
+
+    public void setDatabaseRendelesekFelhasznaloNev(String nev){
+        this.nev=nev;
+    }
+
+    public String getDatabaseRendelesekRaktarNev(){
+        return nev;
+    }
+
 
 }

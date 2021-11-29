@@ -28,16 +28,32 @@ public class DataBaseConnection {
         }
     }
 
-    public ResultSet getFelhaszRendelTermek(){
+    public ResultSet getFelhaszRendelTermek(int felhasznaloID){
         try{
             statement = conn.createStatement();
-            result = statement.executeQuery("SELECT felhasznalo.nev,termekek.megnevezes,rendelesek.darab,rendelesek.datum FROM felhasznalo INNER JOIN rendelesek ON felhasznalo.id = rendelesek.felhasznaloid INNER JOIN termekek ON termekek.id=rendelesek.termekid ");
+            result = statement.executeQuery("SELECT felhasznalo.id,rendelesek.nev,termekek.megnevezes,rendelesek.darab,rendelesek.datum FROM felhasznalo INNER JOIN rendelesek ON felhasznalo.id = rendelesek.felhasznaloid INNER JOIN termekek ON termekek.id=rendelesek.termekid WHERE felhasznalo.id ="+felhasznaloID+";");
 
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }
 
         return  result;
+    }
+
+    public ResultSet getFelhasznaloID(String nevt){
+        try {
+
+            statement = conn.createStatement();
+            result = statement.executeQuery("SELECT id FROM felhasznalo WHERE nev = \""+nevt+"\" ;");
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+
+
     }
 
     public ResultSet getRaktarTermekekTable(){
@@ -220,11 +236,11 @@ public class DataBaseConnection {
 
     }
 
-    public void insertRendelesekTable(int termekid, int darab, String datum, int felhasznaloid, int raktarid){
+    public void insertRendelesekTable(int termekid, int darab, String datum, int felhasznaloid, int raktarid,String nev){
         try {
             statement = conn.createStatement();
 
-            statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid)"+" VALUES ("+termekid+","+darab+",'"+datum+"',"+felhasznaloid+","+raktarid+")");
+            statement.executeUpdate("INSERT INTO rendelesek (termekid,darab,datum,felhasznaloid,raktarid,nev)"+" VALUES ("+termekid+","+darab+",'"+datum+"',"+felhasznaloid+","+raktarid+","+nev+")");
 
 
 

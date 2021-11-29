@@ -143,7 +143,7 @@ public class RendelesUiController {
         int kategoriaRaktar = kategoriabe.getSelectionModel().getSelectedIndex()+1;
         System.out.println(kategoriaRaktar);
 
-        db.insertRendelesekTable(2,(int)termekdbbe.getValue(), datumbe.getText(),1,kategoriaRaktar);
+        db.insertRendelesekTable(2,(int)termekdbbe.getValue(), datumbe.getText(),1,kategoriaRaktar,nevbe.getText());
 
         String nev = nevbe.getText();
 
