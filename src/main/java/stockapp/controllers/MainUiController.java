@@ -44,11 +44,12 @@ public class MainUiController {
     }
 
     @FXML
-    public void loadRendelesFelvetele(ActionEvent event) throws IOException {
+    public void loadRendelesFelvetele(ActionEvent event) throws IOException, SQLException {
         Logger.info("Rendelések felvétele oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
         Parent root = fxmlLoader.load();
         fxmlLoader.<RendelesUiController>getController().setFelhNev(felhnev);
+        fxmlLoader.<RendelesUiController>getController().felhasznaloIDBack();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -61,7 +62,7 @@ public class MainUiController {
         Parent root = fxmlLoader.load();
         fxmlLoader.<RendelesekUiController>getController().setFelhNev(felhnev);
         fxmlLoader.<RendelesekUiController>getController().felhasznaloIDBack();
-
+        fxmlLoader.<RendelesekUiController>getController().DatabaseLoad();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

@@ -73,12 +73,10 @@ public class RendelesekUiController {
 
     @FXML
     private void initialize() throws SQLException {
-
         nevOszlop.setCellValueFactory(new PropertyValueFactory<>("nevOszlop"));
         termekOszlop.setCellValueFactory(new PropertyValueFactory<>("termekOszlop"));
         mennyisegOszlop.setCellValueFactory(new PropertyValueFactory<>("mennyisegOszlop"));
         datumOszlop.setCellValueFactory(new PropertyValueFactory<>("datumOszlop"));
-        DatabaseLoad();
     }
 
     @FXML
@@ -104,6 +102,7 @@ public class RendelesekUiController {
     }
 
     public void DatabaseLoad() throws SQLException {
+        felhasznaloIDBack();
         DataBaseConnection db = new DataBaseConnection();
         adatok = new ArrayList<>();
         data = FXCollections.observableArrayList();
