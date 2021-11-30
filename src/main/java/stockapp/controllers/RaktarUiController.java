@@ -78,6 +78,7 @@ public class RaktarUiController {
         raktarTab.getItems().clear();
         data.addAll(FXCollections.observableArrayList(raktar));
         raktarTab.setItems(data);
+
     }
 
     /*

@@ -58,28 +58,6 @@ public class DataBaseConnection {
         return result;
     }
 
-    public void insertKategoriaTable(String kategorianeve){
-
-        try{
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM kategoria");
-            boolean vane = true;
-            String k;
-            while (result.next()) {
-                k = result.getString("kategorianev");
-                if (k.equals(kategorianeve)) {
-                   Logger.info("Van ilyen kategória");
-                   vane = false;
-                }
-                k="";
-
-            }
-            if(vane == true){
-                statement.executeUpdate("INSERT INTO kategoria (kategorianev)"+" VALUES ('"+kategorianeve+"')", Statement.RETURN_GENERATED_KEYS);
-            }
-        }catch (SQLException throwables) {throwables.printStackTrace();}
-    }
-
     public ResultSet getFelhasznaloTabel(){
         try {
             statement = conn.createStatement();
@@ -98,7 +76,6 @@ public class DataBaseConnection {
             while (result.next()) {
                     String n = result.getString("nev");
                     if (n.equals(nev)) {
-                        Logger.info("Van ilyen nevű felhasználó");
                         vane = false;
                     }
             }
@@ -107,15 +84,6 @@ public class DataBaseConnection {
                 statement.executeUpdate("INSERT INTO felhasznalo (nev,jelszo)"+" VALUES (\""+nev+"\",\""+jelszo+"\")",Statement.RETURN_GENERATED_KEYS);
             }
         } catch (SQLException throwables) {throwables.printStackTrace();}
-    }
-
-    public ResultSet getRaktarTabel(){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM raktar");
-
-        } catch (SQLException throwables) {throwables.printStackTrace();}
-        return result;
     }
 
     public ResultSet getRaktarByTermek(String katnev){
@@ -127,25 +95,6 @@ public class DataBaseConnection {
         return result;
     }
 
-    public void insertRaktarTable(int termekid,int darab){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM raktar");
-            boolean vane=true;
-            while (result.next()) {
-                    int n = result.getInt("termekid");
-                    if (n == termekid) {
-                        Logger.info("Van ilyen termék ID");
-                        vane = false;
-                    }
-            }
-            if(vane){
-                statement.executeUpdate("INSERT INTO raktar (termekid,darab)"+" VALUES ("+termekid+","+darab+")",Statement.RETURN_GENERATED_KEYS);
-            }
-
-        } catch (SQLException throwables) {throwables.printStackTrace();}
-    }
-
     public void updateRaktarTable(int termekid,int darab){
         try {
             statement = conn.createStatement();
@@ -154,7 +103,6 @@ public class DataBaseConnection {
             while (result.next()) {
                 int n = result.getInt("termekid");
                 if (n == termekid) {
-                    Logger.info("Van ilyen termék ID");
                     String query = "UPDATE raktar SET darab = darab - ? WHERE termekid = ?;";
 
                     PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -167,58 +115,11 @@ public class DataBaseConnection {
         } catch (SQLException throwables) {throwables.printStackTrace();}
     }
 
-    public ResultSet getRendelesekTabel(){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM rendelesek");
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return result;
-    }
-
     public void insertRendelesekTable(int termekid, int darab, String datum, int felhasznaloid, String nev){
         try {
-            // ENNEEEK MI BAJAAAA?????
             statement = conn.createStatement();
             statement.executeUpdate("INSERT INTO rendelesek (termekid, darab, datum, felhasznaloid, nev)"+" VALUES (" + termekid+", " + darab + ", \"" + datum + "\", "+ felhasznaloid + ", \"" + nev + "\");");
-            System.out.println("INSERT INTO rendelesek (termekid, darab, datum, felhasznaloid, nev)"+" VALUES (" + termekid+", " + darab + ", \"" + datum + "\", "+ felhasznaloid + ", \"" + nev + "\");");
-        } catch (SQLException throwables) {throwables.printStackTrace();}
-    }
-
-    public ResultSet getTermekByID(int id){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT id,megnevezes FROM termekek");
-        } catch (SQLException throwables) {throwables.printStackTrace();}
-        return result;
-    }
-
-    public ResultSet getTermekekTabel(){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM raktar");
-        } catch (SQLException throwables) {throwables.printStackTrace();}
-        return result;
-    }
-
-    public void insertTermekekTable(String megnevezes,int kategoriaid){
-        try {
-            statement = conn.createStatement();
-            result = statement.executeQuery("SELECT * FROM termekek");
-            boolean vane=true;
-
-            while (result.next()) {
-                String n = result.getString("megnevezes");
-                if (n.equals(megnevezes)) {
-                    Logger.info("Van ilyen termék");
-                    vane = false;
-                }
-            }
-            if(vane){
-                statement.executeUpdate("INSERT INTO termekek (megnevezes,termekid)"+" VALUES ("+megnevezes+","+kategoriaid+")",Statement.RETURN_GENERATED_KEYS);
-            }
+            Logger.info("INSERT INTO rendelesek (termekid, darab, datum, felhasznaloid, nev)"+" VALUES (" + termekid+", " + darab + ", \"" + datum + "\", "+ felhasznaloid + ", \"" + nev + "\");");
         } catch (SQLException throwables) {throwables.printStackTrace();}
     }
 }
