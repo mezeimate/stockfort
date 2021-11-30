@@ -15,15 +15,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import stockapp.database.DatabaseFelhaszRendelTermek;
-import stockapp.database.DatabaseTermekRaktar;
 import stockapp.model.DataBaseConnection;
-import stockapp.model.Raktar;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -53,6 +49,9 @@ public class RendelesekUiController {
 
     int felhasznaloID;
 
+    ObservableList<DatabaseFelhaszRendelTermek> data;
+    ArrayList<DatabaseFelhaszRendelTermek> adatok;
+
     public void setFelhNev(String n){
         this.felhNev = n;
     }
@@ -68,9 +67,6 @@ public class RendelesekUiController {
         stage.show();
     }
 
-    ObservableList<DatabaseFelhaszRendelTermek> data;
-    ArrayList<DatabaseFelhaszRendelTermek> adatok;
-
     @FXML
     private void initialize() throws SQLException {
         nevOszlop.setCellValueFactory(new PropertyValueFactory<>("nevOszlop"));
@@ -80,16 +76,16 @@ public class RendelesekUiController {
     }
 
     @FXML
-    public void handleRendFelBtn(ActionEvent event) throws IOException {
+    public void handleRendFelBtn(ActionEvent event) throws IOException, SQLException {
         Logger.info("Rendelések felvétele oldal betöltése.");
         fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/rendelesUI.fxml"));
         Parent root = fxmlLoader.load();
         fxmlLoader.<RendelesUiController>getController().setFelhNev(felhNev);
+        fxmlLoader.<RendelesUiController>getController().felhasznaloIDBack();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 
     public void felhasznaloIDBack() throws SQLException {
         DataBaseConnection db = new DataBaseConnection();
@@ -106,7 +102,6 @@ public class RendelesekUiController {
         DataBaseConnection db = new DataBaseConnection();
         adatok = new ArrayList<>();
         data = FXCollections.observableArrayList();
-        System.out.println(felhasznaloID +" !!!!!!!!!!");
         ResultSet result = db.getFelhaszRendelTermek(felhasznaloID);
 
         DatabaseFelhaszRendelTermek k = new DatabaseFelhaszRendelTermek();
@@ -119,7 +114,7 @@ public class RendelesekUiController {
             k = new DatabaseFelhaszRendelTermek();
         }
         for (int i = 0; i < adatok.size(); i++) {
-            System.out.println(adatok.get(i).toString());
+            Logger.info(adatok.get(i).toString());
         }
 
         rendelesekTab.getItems().clear();

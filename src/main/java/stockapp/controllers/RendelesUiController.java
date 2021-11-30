@@ -2,6 +2,8 @@ package stockapp.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +16,7 @@ import lombok.SneakyThrows;
 import org.tinylog.Logger;
 import stockapp.database.DatabaseKategoria;
 import stockapp.database.DatabaseTermek;
-import stockapp.database.DatabaseTermekek;
+import stockapp.database.DatabaseTermekRaktar;
 import stockapp.model.DataBaseConnection;
 
 import java.io.IOException;
@@ -23,16 +25,12 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static java.lang.String.*;
+import java.util.Objects;
 
 /**
  * A program rendelés felvétele képernyőjének megvalósítása.
  */
 public class RendelesUiController {
-
-    @FXML
-    Label hibaLabel;
     @FXML
     TextField nevbe;
     @FXML
@@ -40,13 +38,16 @@ public class RendelesUiController {
     @FXML
     ComboBox termekbe;
     @FXML
-    Spinner termekdbbe;
+    Spinner<Integer> termekdbbe;
     @FXML
     Button mentesBtn;
     @FXML
     Button visszaBtn;
     @FXML
     ComboBox kategoriabe;
+
+    @FXML
+    Label infolabel;
 
     FXMLLoader fxmlLoader;
 
@@ -57,13 +58,16 @@ public class RendelesUiController {
 
     String felhNev;
 
+    ObservableList<DatabaseTermekRaktar> data;
+    ArrayList<DatabaseTermekRaktar> raktar;
+
     public void setFelhNev(String n){
         this.felhNev = n;
     }
 
     @FXML
     private void initialize() throws SQLException {
-
+        infolabel.setVisible(false);
         DataBaseConnection db = new DataBaseConnection();
         ArrayList<DatabaseKategoria> kategoriak = new ArrayList<>();
         ResultSet result = db.getKategoriaTabel();
@@ -93,6 +97,18 @@ public class RendelesUiController {
                 termeketFrissit(t1);
             }
         });
+
+        /*
+        nevbe.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    nevbe.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        */
     }
 
     public void felhasznaloIDBack() throws SQLException {
@@ -136,16 +152,59 @@ public class RendelesUiController {
 
     @FXML
     public void mentesHandleBtn() throws SQLException {
-        DataBaseConnection db = new DataBaseConnection();
-        //int kategoriaRaktar = kategoriabe.getSelectionModel().getSelectedIndex()+1;
-        //lekérdezés adott kiválasztott termék IDje
-        //UPDATE
-        int aktTerm = 0;
-        ResultSet termid = db.getTermekID((String)termekbe.getValue());
-        while(termid.next()){
-            aktTerm = termid.getInt("id");
+        infolabel.setVisible(false);
+        if(!Objects.equals(nevbe.getText(), "")){
+
+            if(vaneRaktaron((String)termekbe.getValue(), (Integer)termekdbbe.getValue())){
+
+                DataBaseConnection db = new DataBaseConnection();
+                int aktTerm = 0;
+                ResultSet termid = db.getTermekID((String)termekbe.getValue());
+                while(termid.next()){
+                    aktTerm = termid.getInt("id");
+                }
+                db.insertRendelesekTable(aktTerm, (Integer)termekdbbe.getValue(), datumbe.getText(), felhasznaloID, nevbe.getText());
+                infolabel.setText("Sikeres adatbevitel!");
+                Logger.info("Sikeres adatfelvétel!");
+                infolabel.setVisible(true);
+                nevbe.setText("");
+                kategoriabe.getSelectionModel().selectFirst();
+                termekbe.getSelectionModel().selectFirst();
+
+                db.updateRaktarTable(aktTerm, termekdbbe.getValue());
+            }
+            else {
+                infolabel.setText("Nincs raktáron a kért termék!");
+                infolabel.setVisible(true);
+            }
         }
-        //System.out.println(aktTerm+" "+(Integer)termekdbbe.getValue()+" "+datumbe.getText()+" "+felhasznaloID+" "+nevbe.getText());
-        db.insertRendelesekTable(aktTerm, (Integer)termekdbbe.getValue(), datumbe.getText(), felhasznaloID, nevbe.getText());
+        else{
+            infolabel.setVisible(true);
+        }
+    }
+
+    public boolean vaneRaktaron(String megn, int db) throws SQLException {
+        boolean vissza = false;
+        DataBaseConnection adatb = new DataBaseConnection();
+
+        raktar = new ArrayList<>();
+        data = FXCollections.observableArrayList();
+        ResultSet result = adatb.getRaktarTermekekTable();
+
+        DatabaseTermekRaktar k = new DatabaseTermekRaktar();
+        while(result.next()){
+            k.setDatabaseTermekRaktarMegnevezes(result.getString("megnevezes"));
+            k.setDatabaseTermekRaktarDarab(result.getInt("darab"));
+            raktar.add(k);
+            k = new DatabaseTermekRaktar();
+        }
+
+        for (int i = 0; i < raktar.size(); i++) {
+            if(raktar.get(i).getTermekMegnevezes().equals(megn) && raktar.get(i).getRaktarDarab() >= db){
+                vissza = true;
+            }
+        }
+
+        return vissza;
     }
 }
