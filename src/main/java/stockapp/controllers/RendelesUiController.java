@@ -163,15 +163,18 @@ public class RendelesUiController {
                 while(termid.next()){
                     aktTerm = termid.getInt("id");
                 }
+                System.out.println(termekdbbe.getValue()+ " GET VALLUE");
                 db.insertRendelesekTable(aktTerm, (Integer)termekdbbe.getValue(), datumbe.getText(), felhasznaloID, nevbe.getText());
+                db.updateRaktarTable(aktTerm, termekdbbe.getValue());
+
                 infolabel.setText("Sikeres adatbevitel!");
                 Logger.info("Sikeres adatfelvétel!");
+
                 infolabel.setVisible(true);
                 nevbe.setText("");
+                termekdbbe.getValueFactory().setValue(1);
                 kategoriabe.getSelectionModel().selectFirst();
                 termekbe.getSelectionModel().selectFirst();
-
-                db.updateRaktarTable(aktTerm, termekdbbe.getValue());
             }
             else {
                 infolabel.setText("Nincs raktáron a kért termék!");
